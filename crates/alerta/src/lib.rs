@@ -1,10 +1,32 @@
-//! A library for creating GUI message dialogs.
+//! A minimal, self-contained library for creating simple GUI dialogs ("message boxes") on X11.
+//!
+//! Alerta can be used by applications that want to display a simple GUI message box to the user,
+//! but don't want to pull in an entire GUI framework or invoke an external command like `zenity`.
+//!
+//! There is also a small CLI tool that wraps this library, available in the `alerta-cli` package.
+//!
+//! # Examples
+//!
+//! ```no_run
+//! use alerta::{Icon, ButtonPreset};
+//!
+//! let answer = alerta::alerta()
+//!     .title("Dialog Title")
+//!     .message("This text will appear inside the dialog window.\n\nIt can contain multiple lines of text that will be soft-wrapped to fit in the window.")
+//!     .icon(Icon::Warning)
+//!     .button_preset(ButtonPreset::YesNoCancel)
+//!     .show()?;
+//!
+//! println!("{answer:?}");
+//! # Ok::<_, alerta::Error>(())
+//! ```
 
 mod error;
-#[cfg(test)]
-mod tests;
 mod ui;
 mod x11;
+
+#[cfg(test)]
+mod tests;
 
 use std::{fmt, process::Command, str::FromStr};
 
