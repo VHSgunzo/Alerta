@@ -1,5 +1,9 @@
 # Changelog for the `alerta` library
 
+## v0.1.2
+
+Add a small doc comment to the crate.
+
 ## v0.1.1
 
 Fix required files not being in the Cargo package.
