@@ -14,9 +14,23 @@ framework.
 
 ## Goals
 
-- Produce a <1 MB statically linked executable.
+- Produce a <500 KB statically linked executable.
 - No hard dependencies on `xcb`, `xlib`, or other C libraries.
 - Try not to look *completely* out of place in common desktop environments.
+
+## To get started:
+* **Download the latest revision**
+```
+git clone https://github.com/VHSgunzo/Alerta.git && cd rust-nightly-template
+```
+* **Compile a binary**
+```
+rustup install nightly
+rustup target add x86_64-unknown-linux-musl
+rustup component add rust-src --toolchain nightly
+cargo build --release
+```
+* Or take an already precompiled binary file from the [releases](https://github.com/VHSgunzo/Alerta/releases)
 
 ## Showcase
 

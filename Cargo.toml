@@ -1,3 +1,5 @@
+cargo-features = ["panic-immediate-abort"]
+
 [workspace]
 resolver = "3"
 members = ["crates/*"]
@@ -5,11 +7,16 @@ package.rust-version = "1.91.0" # (keep this in sync with ci.yaml)
 package.edition = "2024"
 package.license = "0BSD"
 
+[profile.dev]
+opt-level = 0
+
 [profile.release]
+lto = true
+opt-level = "z"
+strip = "symbols"
 codegen-units = 1
-opt-level = "s"
+panic = "immediate-abort"
+
+# debug  = false
 debug = "line-tables-only"
 split-debuginfo = "packed"
-panic = "abort"
-strip = true
-lto = true
